@@ -8,8 +8,8 @@
       "matches": [
         "https://www.amazon.com/auto-deliveries/*",
         "https://www.amazon.com.au/auto-deliveries/*",
-        "https://www.amazon.com/gp/subscribe-and-save/manager/viewsubscriptions",
-        "https://www.amazon.com.au/gp/subscribe-and-save/manager/viewsubscriptions"
+        "https://www.amazon.com/gp/subscribe-and-save/manager/viewsubscriptions/*",
+        "https://www.amazon.com.au/gp/subscribe-and-save/manager/viewsubscriptions/*"
       ],
       "js": ["js/content_script.js"]
     }
