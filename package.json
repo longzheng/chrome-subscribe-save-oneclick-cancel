@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-typescript-starter",
+  "name": "chrome-subscribe-save-oneclick-cancel",
   "version": "1.0.0",
-  "description": "chrome-extension-typescript-starter",
+  "description": "chrome-subscribe-save-oneclick-cancel",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
@@ -10,21 +10,15 @@
     "test": "npx jest",
     "style": "prettier --write \"src/**/*.{ts,tsx}\""
   },
-  "author": "",
+  "author": "Long Zheng",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "url": "https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel.git"
   },
   "devDependencies": {
     "@types/chrome": "0.0.158",
     "@types/jest": "^29.5.0",
-    "@types/react": "^18.0.29",
-    "@types/react-dom": "^18.0.11",
     "copy-webpack-plugin": "^9.0.1",
     "glob": "^7.1.6",
     "jest": "^29.5.0",
