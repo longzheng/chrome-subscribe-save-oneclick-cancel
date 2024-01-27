@@ -7,7 +7,8 @@ import {
 const search = location.search;
 
 if (search.includes("snsActionCompleted=cancelSubscription")) {
-    // check if we've used oneclick-cancel
+    // check if we've possible redirected after a one-click cancel form submission
+    // if so, automatically redirect back to the "Deliveries" page for more cancelling
     if (hasOneClickCancelSessionKey()) {
         removeOneClickCancelSessionKey();
 

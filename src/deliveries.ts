@@ -1,7 +1,11 @@
 import { observeEditSubscriptionModal } from "./subscription";
 
+// since the MutationObserver may run multiple times
+// we don't want to re-add the cancel button if it's already been added
 export const ONECLICK_CANCEL_ATTRIBUTE = "data-oneclick-cancel";
 
+// the element containing all the deliveries will be loaded asynchronously
+// this is the element we want to observe for changes
 const deliveriesContainer = document.querySelector(".deliveries-container");
 
 const deliveriesContainerObserver = new MutationObserver(() => {
