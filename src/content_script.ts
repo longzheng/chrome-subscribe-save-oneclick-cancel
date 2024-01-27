@@ -1,17 +1,25 @@
 import { observeDeliveriesContainer } from "./deliveries";
 import {
-    hasOneClickCancelSessionKey,
-    removeOneClickCancelSessionKey,
+    hasCancelSubmitted,
+    removeCancelSubmitted,
+    removeFromCancelQueue,
 } from "./sessionStorage";
 
 const search = location.search;
 
 if (search.includes("snsActionCompleted=cancelSubscription")) {
     // check if we've possible redirected after a one-click cancel form submission
-    // if so, automatically redirect back to the "Deliveries" page for more cancelling
-    if (hasOneClickCancelSessionKey()) {
-        removeOneClickCancelSessionKey();
+    if (hasCancelSubmitted()) {
+        removeCancelSubmitted();
 
+        const searchParams = new URLSearchParams(location.search);
+        const subscriptionId = searchParams.get("subscriptionId");
+
+        if (subscriptionId) {
+            removeFromCancelQueue(subscriptionId);
+        }
+
+        // automatically redirect back to the "Deliveries" page for more cancelling
         location.pathname = "/auto-deliveries/";
     }
 }

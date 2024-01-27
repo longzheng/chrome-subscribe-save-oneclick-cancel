@@ -1,4 +1,4 @@
-import { setOneClickCancelSessionKey } from "./sessionStorage";
+import { setCancelSubmitted } from "./sessionStorage";
 
 const popoverModalSelector = ".a-popover-modal .editSubscriptionContent";
 const subActionSelector = ".subActionContent";
@@ -54,7 +54,7 @@ const subActionObserver = new MutationObserver((_, observer) => {
         return;
     }
 
-    setOneClickCancelSessionKey();
+    setCancelSubmitted();
 
     cancelButton.click();
 
