@@ -6,9 +6,10 @@
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
     "build": "npm run clean && webpack --config webpack/webpack.prod.js",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf chrome-subscribe-save-oneclick-cancel.zip",
     "test": "npx jest",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "build-zip": "npm run build && cd dist && zip -r ../chrome-subscribe-save-oneclick-cancel.zip *"
   },
   "author": "Long Zheng",
   "license": "MIT",
