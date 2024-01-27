@@ -1,65 +1,18 @@
-const ONECLICK_CANCEL_ATTRIBUTE = "data-oneclick-cancel";
+import { observeDeliveriesContainer } from "./deliveries";
+import {
+    hasOneClickCancelSessionKey,
+    removeOneClickCancelSessionKey,
+} from "./sessionStorage";
 
-const deliveriesContainer = document.getElementsByClassName(
-    "deliveries-container",
-)[0];
+const search = location.search;
 
-const deliveriesContainerObserver = new MutationObserver(() => {
-    const subscriptionItems = Array.from(
-        deliveriesContainer.querySelectorAll<HTMLElement>(".subscription-card"),
-    );
+if (search.includes("snsActionCompleted=cancelSubscription")) {
+    // check if we've used oneclick-cancel
+    if (hasOneClickCancelSessionKey()) {
+        removeOneClickCancelSessionKey();
 
-    for (const subscriptionItem of subscriptionItems) {
-        // verify there is a `data-subscription-id` attribute
-        if (!subscriptionItem.dataset.subscriptionId) {
-            console.error(
-                "subscription-card did not contain a `data-subscription-id` attribute",
-            );
-            continue;
-        }
-
-        if (subscriptionItem.hasAttribute(ONECLICK_CANCEL_ATTRIBUTE)) {
-            continue;
-        }
-
-        subscriptionItem.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, "true");
-
-        const cancelButton = getCancelButton(subscriptionItem);
-        subscriptionItem.appendChild(cancelButton);
+        location.pathname = "/auto-deliveries/";
     }
-});
-
-deliveriesContainerObserver.observe(deliveriesContainer, {
-    attributes: true,
-    childList: true,
-});
-
-function getCancelButton(subscriptionItemHtml: HTMLElement) {
-    const cancelButton = document.createElement("button");
-    cancelButton.innerText = "One-click cancel";
-    cancelButton.onclick = () => {
-        oneClickCancel(subscriptionItemHtml);
-    };
-
-    return cancelButton;
 }
 
-function oneClickCancel(subscriptionItemHtml: HTMLElement) {
-    // click on the image
-    const modalTrigger = subscriptionItemHtml.querySelector<HTMLElement>(
-        ".subscription-image-container > span",
-    );
-
-    if (!modalTrigger) {
-        console.error("Could not find modal trigger");
-        return;
-    }
-
-    modalTrigger.click();
-
-    // wait for popup
-    // click cancel button
-    // wait for cancel page
-    // click cancel
-    // refresh page? how do we go back?
-}
+observeDeliveriesContainer();
