@@ -20,10 +20,10 @@ const manifest = {
         {
             matches: [
                 // subscribe and save can appear in either of these two URLs
-                ...amazonDomains.map((domain) => `${domain}/auto-deliveries/*`),
+                ...amazonDomains.map((domain) => `${domain}/auto-deliveries*`),
                 ...amazonDomains.map(
                     (domain) =>
-                        `${domain}/gp/subscribe-and-save/manager/viewsubscriptions/*`,
+                        `${domain}/gp/subscribe-and-save/manager/viewsubscriptions*`,
                 ),
             ],
             js: ["js/content_script.js"],
