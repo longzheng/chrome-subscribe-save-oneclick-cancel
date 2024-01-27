@@ -1,11 +1,12 @@
-const webpack = require("webpack");
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-env node */
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const srcDir = path.join(__dirname, "..", "src");
 
 module.exports = {
     entry: {
-      content_script: path.join(srcDir, 'content_script.tsx'),
+        content_script: path.join(srcDir, "content_script.ts"),
     },
     output: {
         path: path.join(__dirname, "../dist/js"),
@@ -15,8 +16,8 @@ module.exports = {
         splitChunks: {
             name: "vendor",
             chunks(chunk) {
-              return chunk.name !== 'background';
-            }
+                return chunk.name !== "background";
+            },
         },
     },
     module: {

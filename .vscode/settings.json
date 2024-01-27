@@ -8,5 +8,8 @@
             ],
             "url": "http://json.schemastore.org/chrome-manifest"
         }
-    ]
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    }
 }
