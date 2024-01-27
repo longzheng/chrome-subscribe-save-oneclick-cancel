@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
+  "name": "Amazon Subscribe & Save one-click cancel",
+  "description": "Easy way to cancel Subscribe & Save subscriptions on Amazon with just one button click",
   "version": "1.0",
   "content_scripts": [
     {
