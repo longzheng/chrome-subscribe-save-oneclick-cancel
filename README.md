@@ -1,70 +1,17 @@
-# Chrome Extension TypeScript Starter
+# Amazon Subscribe & Save one-click cancel Chrome extension
+Easy way to cancel Subscribe & Save subscriptions on Amazon with just one button click.
 
-![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
+- Supports Amazon.com, Amazon.com.au (additional country URL need to be added to `manifest.json`)
+- Adds "One-click cancel" button to subscribe & save page
+- Automatically clicks through the subscription dialog to cancel
+- After cancellation, redirects users back to the "Deliveries" tab to cancel more subscriptions
 
-Chrome Extension, TypeScript and Visual Studio Code
+![Demo](https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel/assets/484912/2ea59d04-75ce-43dc-aa9f-f7f6a497b4ec)
 
-## Prerequisites
+### Install
 
-* [node + npm](https://nodejs.org/) (Current Version)
-
-## Option
-
-* [Visual Studio Code](https://code.visualstudio.com/)
-
-## Includes the following
-
-* TypeScript
-* Webpack
-* React
-* Jest
-* Example Code
-    * Chrome Storage
-    * Options Version 2
-    * content script
-    * count up badge number
-    * background
-
-## Project Structure
-
-* src/typescript: TypeScript source files
-* src/assets: static files
-* dist: Chrome Extension directory
-* dist/js: Generated JavaScript files
-
-## Setup
-
-```
-npm install
-```
-
-## Import as Visual Studio Code project
-
-...
-
-## Build
-
-```
-npm run build
-```
-
-## Build in watch mode
-
-### terminal
-
-```
-npm run watch
-```
-
-### Visual Studio Code
-
-Run watch mode.
-
-type `Ctrl + Shift + B`
-
-## Load extension to chrome
-
-Load `dist` directory
-
-## Test
-`npx jest` or `npm run test`
+The extension is not published to the Chrome Web Store, you'll have to install manually.
+1. Download the latest ZIP file from the [releases page](https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel/releases)
+2. Open Chrome "Manage Extensions" page `chrome://extensions/`
+3. Enable "Developer mode" toggle in top right corner
+4. Drag and drop the ZIP file onto the extensions page
