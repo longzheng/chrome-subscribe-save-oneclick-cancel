@@ -4,6 +4,7 @@ import {
     removeCancelSubmitted,
     removeFromCancelQueue,
 } from "./sessionStorage";
+import { observeSubscriptionsContainer } from "./subscriptions";
 
 (async () => {
     const search = location.search;
@@ -26,4 +27,5 @@ import {
     }
 
     observeDeliveriesContainer();
+    observeSubscriptionsContainer();
 })();

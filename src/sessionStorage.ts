@@ -24,8 +24,6 @@ export async function getCancelQueue(): Promise<string[]> {
 
     if (!storageValue) return [];
 
-    // const parsed = JSON.parse(storageValue);
-
     if (!Array.isArray(storageValue)) return [];
 
     return storageValue as string[];
