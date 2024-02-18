@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "ESNext",
+        "module": "NodeNext",
+        "esModuleInterop": true,
+        "moduleResolution": "NodeNext",
+        "types": [
+            "node",
+            "chrome"
+        ]
+    }
+}

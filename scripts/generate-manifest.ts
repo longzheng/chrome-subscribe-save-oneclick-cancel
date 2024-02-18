@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
 
 // supported Amazon domain names
 const amazonDomains = [
@@ -10,7 +10,7 @@ const amazonDomains = [
     "https://www.amazon.com.au",
 ];
 
-const manifest = {
+const manifest: chrome.runtime.ManifestV3 = {
     manifest_version: 3,
     name: "Amazon Subscribe & Save one-click cancel",
     description:

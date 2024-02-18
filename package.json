@@ -19,7 +19,7 @@
     "url": "https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel.git"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.158",
+    "@types/chrome": "0.0.260",
     "@types/jest": "^29.5.0",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
