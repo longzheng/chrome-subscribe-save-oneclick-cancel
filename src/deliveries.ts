@@ -18,7 +18,7 @@ const deliveriesContainer = document.querySelector(".deliveries-container");
 
 // the element containing all the deliveries will be loaded asynchronously
 // we need to observe the element for changes when it is loaded
-const deliveriesContainerObserver = new MutationObserver(() => {
+const deliveriesContainerObserver = new MutationObserver(async () => {
     if (!deliveriesContainer) {
         return;
     }
@@ -37,8 +37,8 @@ const deliveriesContainerObserver = new MutationObserver(() => {
         processDeliveryCard(deliveryCard);
     }
 
-    addCancelAllButton();
-    processCancelQueue();
+    await addCancelAllButton();
+    await processCancelQueue();
 });
 
 export function observeDeliveriesContainer() {
@@ -121,7 +121,7 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
         marginTop: "10px",
     });
 
-    cancelAllButton.onclick = () => {
+    cancelAllButton.onclick = async () => {
         if (
             !confirm(
                 `Are you sure you want to cancel all ${deliveryCardSubscriptionIds.length} subscriptions in this delivery?\n\nThe screen will automatically refresh after each cancellation and cancel the next subscription.  Do not click on anything until it is all done.`,
@@ -130,8 +130,8 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
             return;
         }
 
-        addToCancelQueue(deliveryCardSubscriptionIds);
-        processCancelQueue();
+        await addToCancelQueue(deliveryCardSubscriptionIds);
+        await processCancelQueue();
     };
 
     deliveryInformationContainer.appendChild(cancelAllButton);
@@ -195,7 +195,7 @@ function addCancelAllButton() {
         marginTop: "-30px",
     });
 
-    cancelAllButton.onclick = () => {
+    cancelAllButton.onclick = async () => {
         if (
             !confirm(
                 `Are you sure you want to cancel all ${subscriptionsCount} subscriptions?\n\nThe screen will automatically refresh after each cancellation and cancel the next subscription. Do not click on anything until it is all done.`,
@@ -208,15 +208,15 @@ function addCancelAllButton() {
             itemCancelButtonButtonBySubscriptionId.keys(),
         );
 
-        addToCancelQueue(subscriptionIds);
-        processCancelQueue();
+        await addToCancelQueue(subscriptionIds);
+        await processCancelQueue();
     };
 
     navigationTabs.insertAdjacentElement("afterend", cancelAllButton);
 }
 
-function processCancelQueue() {
-    const cancelQueue = getCancelQueue();
+async function processCancelQueue() {
+    const cancelQueue = await getCancelQueue();
 
     if (cancelQueue.length === 0) {
         return;
@@ -228,8 +228,8 @@ function processCancelQueue() {
 
     if (!cancelButton) {
         // if cancel button is not found, remove from queue and try again
-        removeFromCancelQueue(firstItem);
-        processCancelQueue();
+        await removeFromCancelQueue(firstItem);
+        await processCancelQueue();
         return;
     }
 

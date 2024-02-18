@@ -45,7 +45,7 @@ export function observeEditSubscriptionModal() {
     });
 }
 
-const subActionObserver = new MutationObserver((_, observer) => {
+const subActionObserver = new MutationObserver(async (_, observer) => {
     const cancelButton = document.querySelector<HTMLFormElement>(
         `${popoverModalSelector} ${subActionSelector} form input[type='submit']`,
     );
@@ -54,7 +54,7 @@ const subActionObserver = new MutationObserver((_, observer) => {
         return;
     }
 
-    setCancelSubmitted();
+    await setCancelSubmitted();
 
     cancelButton.click();
 

@@ -19,5 +19,8 @@
                 "js/content_script.js"
             ]
         }
+    ],
+    "permissions": [
+        "storage"
     ]
 }

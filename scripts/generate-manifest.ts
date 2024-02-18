@@ -29,6 +29,7 @@ const manifest: chrome.runtime.ManifestV3 = {
             js: ["js/content_script.js"],
         },
     ],
+    permissions: ["storage"],
 };
 
 const manifestJson = JSON.stringify(manifest, null, 4);

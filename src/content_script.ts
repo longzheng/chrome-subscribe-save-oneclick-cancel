@@ -5,23 +5,25 @@ import {
     removeFromCancelQueue,
 } from "./sessionStorage";
 
-const search = location.search;
+(async () => {
+    const search = location.search;
 
-if (search.includes("snsActionCompleted=cancelSubscription")) {
-    // check if we've possible redirected after a one-click cancel form submission
-    if (hasCancelSubmitted()) {
-        removeCancelSubmitted();
+    if (search.includes("snsActionCompleted=cancelSubscription")) {
+        // check if we've possible redirected after a one-click cancel form submission
+        if (await hasCancelSubmitted()) {
+            await removeCancelSubmitted();
 
-        const searchParams = new URLSearchParams(location.search);
-        const subscriptionId = searchParams.get("subscriptionId");
+            const searchParams = new URLSearchParams(location.search);
+            const subscriptionId = searchParams.get("subscriptionId");
 
-        if (subscriptionId) {
-            removeFromCancelQueue(subscriptionId);
+            if (subscriptionId) {
+                await removeFromCancelQueue(subscriptionId);
+            }
+
+            // automatically redirect back to the "Deliveries" page for more cancelling
+            location.pathname = "/auto-deliveries/";
         }
-
-        // automatically redirect back to the "Deliveries" page for more cancelling
-        location.pathname = "/auto-deliveries/";
     }
-}
 
-observeDeliveriesContainer();
+    observeDeliveriesContainer();
+})();

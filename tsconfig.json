@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
         "strict": true,
-        "target": "es6",
+        "target": "ESNext",
         "moduleResolution": "bundler",
-        "module": "ES6",
+        "module": "ESNext",
         "esModuleInterop": true,
         "sourceMap": false,
         "rootDir": "src",
