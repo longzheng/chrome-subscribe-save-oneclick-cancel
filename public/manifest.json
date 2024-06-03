@@ -16,7 +16,8 @@
                 "https://www.amazon.com.au/gp/subscribe-and-save/manager/viewsubscriptions*"
             ],
             "js": [
-                "js/content_script.js"
+                "js/content_script.js",
+                "js/vendor.js"
             ]
         }
     ],

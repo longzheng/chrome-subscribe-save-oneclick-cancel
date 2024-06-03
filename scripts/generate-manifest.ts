@@ -25,7 +25,7 @@ const manifest: chrome.runtime.ManifestV3 = {
                         `${domain}/gp/subscribe-and-save/manager/viewsubscriptions*`,
                 ),
             ],
-            js: ["js/content_script.js"],
+            js: ["js/content_script.js", "js/vendor.js"],
         },
     ],
     permissions: ["storage"],
