@@ -1,7 +1,6 @@
-// since the MutationObserver may run multiple times
-
 import { getCancelQueue, removeFromCancelQueue } from "./sessionStorage";
 
+// since the MutationObserver may run multiple times
 // we don't want to re-add the cancel button if it's already been added
 export const ONECLICK_CANCEL_ATTRIBUTE = "data-oneclick-cancel";
 
