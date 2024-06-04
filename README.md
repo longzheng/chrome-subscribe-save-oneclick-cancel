@@ -9,10 +9,13 @@ Easy way to cancel Amazon Subscribe & Save subscriptions with just one button cl
 - Automatically clicks through the subscription dialog to cancel
 - After cancellation, redirects users back to the "Deliveries" tab to cancel more subscriptions
 
-### Install
+### Install from Chrome Web Store
 
-The extension is not published to the Chrome Web Store, you'll have to install manually.
-1. Download the latest ZIP file from the [releases page](https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel/releases)
-2. Open Chrome "Manage Extensions" page `chrome://extensions/`
-3. Enable "Developer mode" toggle in top right corner
-4. Drag and drop the ZIP file onto the extensions page
+https://chrome.google.com/webstore/detail/lmhmoofhakpnlfighmgfkoonfkbjjgfh?authuser=0&hl=en-AU
+
+### Install locally
+
+1. Build the project with `npm install` and `npm run build`
+1. Open Chrome "Manage Extensions" page `chrome://extensions/`
+1. Enable "Developer mode" toggle in top right corner
+1. Click "Load unpacked" button and select the `dist` folder in the project
