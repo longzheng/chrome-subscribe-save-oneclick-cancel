@@ -15,6 +15,12 @@ const manifest: chrome.runtime.ManifestV3 = {
     description:
         "Easy way to cancel Subscribe & Save subscriptions on Amazon with just one button click",
     version: "1.0",
+    icons: {
+        16: "icon16.png",
+        32: "icon32.png",
+        48: "icon48.png",
+        128: "icon128.png",
+    },
     content_scripts: [
         {
             matches: [
