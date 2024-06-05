@@ -22,4 +22,8 @@ jobs:
         
     - run: npm ci
     - run: npm run lint
-    - run: npm run build --if-present
+    - run: npm run build-zip
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v4
+      with:
+        path: chrome-subscribe-save-oneclick-cancel.zip
