@@ -17,8 +17,7 @@ const modalObserver = new MutationObserver((_, observer) => {
     );
 
     if (!cancelButton) {
-        console.error("Could not find cancel button");
-        return;
+        throw new Error("Could not find cancel button");
     }
 
     observer.disconnect();
@@ -27,8 +26,7 @@ const modalObserver = new MutationObserver((_, observer) => {
         popoverModal.querySelector<HTMLElement>(subActionSelector);
 
     if (!subActionContent) {
-        console.error("Could not find subActionContainer");
-        return;
+        throw new Error("Could not find subActionContainer");
     }
 
     subActionObserver.observe(subActionContent, {

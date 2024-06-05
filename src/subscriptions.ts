@@ -77,8 +77,7 @@ function addCancelAllButton() {
     );
 
     if (!subscriptionFilters) {
-        console.error("Could not find subscriptions filter");
-        return;
+        throw new Error("Could not find subscriptions filter");
     }
 
     if (subscriptionFilters.hasAttribute(ONECLICK_CANCEL_ATTRIBUTE)) {

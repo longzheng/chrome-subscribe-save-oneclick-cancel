@@ -32,8 +32,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
     const subscriptionId = subscriptionCard.dataset.subscriptionId;
 
     if (!subscriptionId) {
-        console.error("Subscription ID not found");
-        return null;
+        throw new Error("Subscription ID not found");
     }
 
     const cancelButton = document.createElement("button");
@@ -54,8 +53,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
             );
 
         if (!editSubscriptionModalTrigger) {
-            console.error("Could not find edit subscription modal trigger");
-            return;
+            throw new Error("Could not find edit subscription modal trigger");
         }
 
         // the edit subscription modal is loaded asynchronously

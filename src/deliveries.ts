@@ -78,8 +78,7 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
     );
 
     if (!deliveryInformationContainer) {
-        console.error("Could not find delivery information container");
-        return;
+        throw new Error("Could not find delivery information container");
     }
 
     const cancelAllButton = document.createElement("button");
