@@ -1,14 +1,11 @@
-import { addToCancelQueue } from "./sessionStorage";
-import { processSubscriptionCard } from "./subscriptionCard";
-import { buttonStyles } from "./styles";
-import { ONECLICK_CANCEL_ATTRIBUTE, processCancelQueue } from "./common";
+import { addToCancelQueue } from './sessionStorage';
+import { processSubscriptionCard } from './subscriptionCard';
+import { buttonStyles } from './styles';
+import { ONECLICK_CANCEL_ATTRIBUTE, processCancelQueue } from './common';
 
-const itemCancelButtonButtonBySubscriptionId = new Map<
-    string,
-    HTMLButtonElement
->();
+const itemCancelButtonButtonBySubscriptionId = new Map<string, HTMLButtonElement>();
 
-const deliveriesContainer = document.querySelector("#mydContainer");
+const deliveriesContainer = document.querySelector('#mydContainer');
 
 // the element containing all the deliveries will be loaded asynchronously
 // we need to observe the element for changes when it is loaded
@@ -18,16 +15,14 @@ const deliveriesContainerObserver = new MutationObserver(() => {
             return;
         }
 
-        const deliveryCards = Array.from(
-            deliveriesContainer.querySelectorAll<HTMLElement>(".delivery-card"),
-        );
+        const deliveryCards = Array.from(deliveriesContainer.querySelectorAll<HTMLElement>('.delivery-card'));
 
         for (const deliveryCard of deliveryCards) {
             if (deliveryCard.hasAttribute(ONECLICK_CANCEL_ATTRIBUTE)) {
                 continue;
             }
 
-            deliveryCard.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, "true");
+            deliveryCard.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, 'true');
 
             processDeliveryCard(deliveryCard);
         }
@@ -48,9 +43,7 @@ export function observeDeliveriesContainer() {
 }
 
 function processDeliveryCard(deliveryCard: HTMLElement) {
-    const subscriptionCards = Array.from(
-        deliveryCard.querySelectorAll<HTMLElement>(".subscription-card"),
-    );
+    const subscriptionCards = Array.from(deliveryCard.querySelectorAll<HTMLElement>('.subscription-card'));
 
     const deliveryCardSubscriptionIds: string[] = [];
 
@@ -61,10 +54,7 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
             continue;
         }
 
-        itemCancelButtonButtonBySubscriptionId.set(
-            result.subscriptionId,
-            result.cancelButton,
-        );
+        itemCancelButtonButtonBySubscriptionId.set(result.subscriptionId, result.cancelButton);
 
         deliveryCardSubscriptionIds.push(result.subscriptionId);
     }
@@ -73,21 +63,19 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
         return;
     }
 
-    const deliveryInformationContainer = deliveryCard.querySelector(
-        ".delivery-information-container",
-    );
+    const deliveryInformationContainer = deliveryCard.querySelector('.delivery-information-container');
 
     if (!deliveryInformationContainer) {
-        throw new Error("Could not find delivery information container");
+        throw new Error('Could not find delivery information container');
     }
 
-    const cancelAllButton = document.createElement("button");
+    const cancelAllButton = document.createElement('button');
     cancelAllButton.innerText = `One-click cancel delivery`;
     Object.assign(cancelAllButton.style, {
         ...buttonStyles,
-        display: "block",
-        width: "100%",
-        marginTop: "10px",
+        display: 'block',
+        width: '100%',
+        marginTop: '10px',
     });
 
     cancelAllButton.onclick = async () => {

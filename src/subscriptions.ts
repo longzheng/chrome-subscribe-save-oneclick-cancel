@@ -1,14 +1,11 @@
-import { addToCancelQueue } from "./sessionStorage";
-import { processSubscriptionCard } from "./subscriptionCard";
-import { buttonStyles } from "./styles";
-import { ONECLICK_CANCEL_ATTRIBUTE, processCancelQueue } from "./common";
+import { addToCancelQueue } from './sessionStorage';
+import { processSubscriptionCard } from './subscriptionCard';
+import { buttonStyles } from './styles';
+import { ONECLICK_CANCEL_ATTRIBUTE, processCancelQueue } from './common';
 
-const itemCancelButtonButtonBySubscriptionId = new Map<
-    string,
-    HTMLButtonElement
->();
+const itemCancelButtonButtonBySubscriptionId = new Map<string, HTMLButtonElement>();
 
-const subscriptionsContainer = document.querySelector("#mysContainer");
+const subscriptionsContainer = document.querySelector('#mysContainer');
 
 // the element containing all the deliveries will be loaded asynchronously
 // we need to observe the element for changes when it is loaded
@@ -19,9 +16,7 @@ const subscriptionsContainerObserver = new MutationObserver(() => {
         }
 
         const subscriptionCards = Array.from(
-            subscriptionsContainer.querySelectorAll<HTMLElement>(
-                ".subscription-card",
-            ),
+            subscriptionsContainer.querySelectorAll<HTMLElement>('.subscription-card'),
         );
 
         for (const subscriptionCard of subscriptionCards) {
@@ -31,10 +26,7 @@ const subscriptionsContainerObserver = new MutationObserver(() => {
                 continue;
             }
 
-            itemCancelButtonButtonBySubscriptionId.set(
-                result.subscriptionId,
-                result.cancelButton,
-            );
+            itemCancelButtonButtonBySubscriptionId.set(result.subscriptionId, result.cancelButton);
         }
 
         addCancelAllButton();
@@ -48,10 +40,10 @@ export function observeSubscriptionsContainer() {
     }
 
     const searchParams = new URLSearchParams(location.search);
-    const listFilter = searchParams.get("listFilter");
+    const listFilter = searchParams.get('listFilter');
 
     // ignore cancelled subscriptions page
-    if (listFilter === "inactive") {
+    if (listFilter === 'inactive') {
         return;
     }
 
@@ -72,25 +64,23 @@ function addCancelAllButton() {
         return;
     }
 
-    const subscriptionFilters = subscriptionsContainer.querySelector(
-        ".subscription-filters-row-thick",
-    );
+    const subscriptionFilters = subscriptionsContainer.querySelector('.subscription-filters-row-thick');
 
     if (!subscriptionFilters) {
-        throw new Error("Could not find subscriptions filter");
+        throw new Error('Could not find subscriptions filter');
     }
 
     if (subscriptionFilters.hasAttribute(ONECLICK_CANCEL_ATTRIBUTE)) {
         return;
     }
 
-    subscriptionFilters.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, "true");
+    subscriptionFilters.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, 'true');
 
-    const cancelAllButton = document.createElement("button");
+    const cancelAllButton = document.createElement('button');
     cancelAllButton.innerText = `One-click cancel all ${subscriptionsCount} subscriptions`;
     Object.assign(cancelAllButton.style, {
         ...buttonStyles,
-        marginLeft: "30px",
+        marginLeft: '30px',
     });
 
     cancelAllButton.onclick = async () => {
@@ -102,13 +92,11 @@ function addCancelAllButton() {
             return;
         }
 
-        const subscriptionIds = Array.from(
-            itemCancelButtonButtonBySubscriptionId.keys(),
-        );
+        const subscriptionIds = Array.from(itemCancelButtonButtonBySubscriptionId.keys());
 
         await addToCancelQueue(subscriptionIds);
         await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
     };
 
-    subscriptionFilters.insertAdjacentElement("beforeend", cancelAllButton);
+    subscriptionFilters.insertAdjacentElement('beforeend', cancelAllButton);
 }

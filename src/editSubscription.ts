@@ -1,7 +1,7 @@
-import { setCancelSubmitted } from "./sessionStorage";
+import { setCancelSubmitted } from './sessionStorage';
 
-const popoverModalSelector = ".a-popover-modal .editSubscriptionContent";
-const subActionSelector = ".subActionContent";
+const popoverModalSelector = '.a-popover-modal .editSubscriptionContent';
+const subActionSelector = '.subActionContent';
 
 const modalObserver = new MutationObserver((_, observer) => {
     const popoverModal = document.querySelector(popoverModalSelector);
@@ -12,21 +12,18 @@ const modalObserver = new MutationObserver((_, observer) => {
 
     // the button will trigger navigating to the cancel page
     // the span inside the button opens the cancel page inside the existing modal
-    const cancelButton = popoverModal.querySelector<HTMLElement>(
-        ".t-action-type-CANCEL > span",
-    );
+    const cancelButton = popoverModal.querySelector<HTMLElement>('.t-action-type-CANCEL > span');
 
     if (!cancelButton) {
-        throw new Error("Could not find cancel button");
+        throw new Error('Could not find cancel button');
     }
 
     observer.disconnect();
 
-    const subActionContent =
-        popoverModal.querySelector<HTMLElement>(subActionSelector);
+    const subActionContent = popoverModal.querySelector<HTMLElement>(subActionSelector);
 
     if (!subActionContent) {
-        throw new Error("Could not find subActionContainer");
+        throw new Error('Could not find subActionContainer');
     }
 
     subActionObserver.observe(subActionContent, {

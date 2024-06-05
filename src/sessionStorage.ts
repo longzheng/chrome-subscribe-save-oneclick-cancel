@@ -1,5 +1,5 @@
-const ONECLICK_CANCEL_SUBMITTED_KEY = "oneClickCancelSubmitted";
-const ONECLICK_CANCEL_QUEUE_KEY = "oneClickCancelQueue";
+const ONECLICK_CANCEL_SUBMITTED_KEY = 'oneClickCancelSubmitted';
+const ONECLICK_CANCEL_QUEUE_KEY = 'oneClickCancelQueue';
 
 export async function setCancelSubmitted() {
     await chrome.storage.local.set({ [ONECLICK_CANCEL_SUBMITTED_KEY]: true });

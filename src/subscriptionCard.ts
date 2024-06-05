@@ -1,6 +1,6 @@
-import { ONECLICK_CANCEL_ATTRIBUTE } from "./common";
-import { observeEditSubscriptionModal } from "./editSubscription";
-import { buttonStyles } from "./styles";
+import { ONECLICK_CANCEL_ATTRIBUTE } from './common';
+import { observeEditSubscriptionModal } from './editSubscription';
+import { buttonStyles } from './styles';
 
 export function processSubscriptionCard(subscriptionCard: HTMLElement): {
     subscriptionId: string;
@@ -14,11 +14,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
 
     // there is a notification on this subscription
     // it may be a notification for a subscription that has already been cancelled
-    if (
-        subscriptionCard.querySelector(
-            ".subscription-notification-title-container.info-notification",
-        )
-    ) {
+    if (subscriptionCard.querySelector('.subscription-notification-title-container.info-notification')) {
         return null;
     }
 
@@ -27,33 +23,32 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
         return null;
     }
 
-    subscriptionCard.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, "true");
+    subscriptionCard.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, 'true');
 
     const subscriptionId = subscriptionCard.dataset.subscriptionId;
 
     if (!subscriptionId) {
-        throw new Error("Subscription ID not found");
+        throw new Error('Subscription ID not found');
     }
 
-    const cancelButton = document.createElement("button");
-    cancelButton.innerText = "One-click cancel";
+    const cancelButton = document.createElement('button');
+    cancelButton.innerText = 'One-click cancel';
 
     Object.assign(cancelButton.style, {
         ...buttonStyles,
-        display: "block",
-        width: "100%",
-        marginTop: "10px",
+        display: 'block',
+        width: '100%',
+        marginTop: '10px',
     });
 
     cancelButton.onclick = () => {
         // click on the subscription image to open edit subscription modal
-        const editSubscriptionModalTrigger =
-            subscriptionCard.querySelector<HTMLElement>(
-                ".subscription-image-container > span",
-            );
+        const editSubscriptionModalTrigger = subscriptionCard.querySelector<HTMLElement>(
+            '.subscription-image-container > span',
+        );
 
         if (!editSubscriptionModalTrigger) {
-            throw new Error("Could not find edit subscription modal trigger");
+            throw new Error('Could not find edit subscription modal trigger');
         }
 
         // the edit subscription modal is loaded asynchronously

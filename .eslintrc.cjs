@@ -1,13 +1,13 @@
 /* eslint-env node */
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
-    plugins: ["@typescript-eslint", "prettier"],
+    plugins: ['@typescript-eslint', 'prettier'],
     extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended-type-checked",
-        "plugin:prettier/recommended",
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended-type-checked',
+        'plugin:prettier/recommended',
     ],
-    parser: "@typescript-eslint/parser",
+    parser: '@typescript-eslint/parser',
     parserOptions: {
         project: true,
         tsconfigRootDir: __dirname,
@@ -18,8 +18,8 @@ module.exports = {
     },
     overrides: [
         {
-            files: ["*.js", "*.cjs"],
-            extends: ["plugin:@typescript-eslint/disable-type-checked"],
+            files: ['*.js', '*.cjs'],
+            extends: ['plugin:@typescript-eslint/disable-type-checked'],
         },
     ],
 };
