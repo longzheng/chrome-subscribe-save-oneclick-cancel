@@ -2,9 +2,11 @@ import { observeDeliveriesContainer } from './deliveries';
 import { hasCancelSubmitted, removeCancelSubmitted, removeFromCancelQueue } from './sessionStorage';
 import { observeSubscriptionsContainer } from './subscriptions';
 import rg4js from 'raygun4js';
+import { VERSION } from './version';
 
 rg4js('apiKey', 'AcjYeDpxudocd1VnNiiFg');
 rg4js('enableCrashReporting', true);
+rg4js('setVersion', VERSION);
 
 void (async () => {
     try {

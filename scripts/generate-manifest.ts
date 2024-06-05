@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import { VERSION } from '../src/version';
 
 // supported Amazon domain names
 const amazonDomains = [
@@ -19,7 +20,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     manifest_version: 3,
     name: 'Amazon Subscribe & Save one-click cancel',
     description: 'Easy way to cancel Subscribe & Save subscriptions on Amazon with just one button click',
-    version: '1.0.3',
+    version: VERSION,
     icons: {
         16: 'icon16.png',
         32: 'icon32.png',
