@@ -4,6 +4,7 @@ const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const srcDir = path.join(__dirname, "..", "src");
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
     entry: {
         content_script: path.join(srcDir, "content_script.ts"),
