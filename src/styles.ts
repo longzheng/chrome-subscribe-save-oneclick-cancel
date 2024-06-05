@@ -3,5 +3,6 @@ export const buttonStyles: Partial<CSSStyleDeclaration> = {
     color: "white",
     padding: "4px",
     border: "none",
-    borderRadius: "2px",
+    borderRadius: "3px",
+    boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
 };
