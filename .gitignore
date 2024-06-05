@@ -4,3 +4,4 @@ dist/
 tmp/
 .DS_Store
 chrome-subscribe-save-oneclick-cancel.zip
+public/manifest.json
