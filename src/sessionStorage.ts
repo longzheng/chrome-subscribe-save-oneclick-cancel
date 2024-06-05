@@ -18,9 +18,7 @@ export async function removeCancelSubmitted() {
 export async function getCancelQueue(): Promise<string[]> {
     const value = await chrome.storage.local.get(ONECLICK_CANCEL_QUEUE_KEY);
 
-    const storageValue = value[ONECLICK_CANCEL_QUEUE_KEY] as
-        | unknown
-        | undefined;
+    const storageValue = value[ONECLICK_CANCEL_QUEUE_KEY] as unknown;
 
     if (!storageValue) return [];
 

@@ -12,26 +12,28 @@ const deliveriesContainer = document.querySelector("#mydContainer");
 
 // the element containing all the deliveries will be loaded asynchronously
 // we need to observe the element for changes when it is loaded
-const deliveriesContainerObserver = new MutationObserver(async () => {
-    if (!deliveriesContainer) {
-        return;
-    }
-
-    const deliveryCards = Array.from(
-        deliveriesContainer.querySelectorAll<HTMLElement>(".delivery-card"),
-    );
-
-    for (const deliveryCard of deliveryCards) {
-        if (deliveryCard.hasAttribute(ONECLICK_CANCEL_ATTRIBUTE)) {
-            continue;
+const deliveriesContainerObserver = new MutationObserver(() => {
+    void (async () => {
+        if (!deliveriesContainer) {
+            return;
         }
 
-        deliveryCard.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, "true");
+        const deliveryCards = Array.from(
+            deliveriesContainer.querySelectorAll<HTMLElement>(".delivery-card"),
+        );
 
-        processDeliveryCard(deliveryCard);
-    }
+        for (const deliveryCard of deliveryCards) {
+            if (deliveryCard.hasAttribute(ONECLICK_CANCEL_ATTRIBUTE)) {
+                continue;
+            }
 
-    await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
+            deliveryCard.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, "true");
+
+            processDeliveryCard(deliveryCard);
+        }
+
+        await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
+    })();
 });
 
 export function observeDeliveriesContainer() {

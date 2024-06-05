@@ -45,18 +45,20 @@ export function observeEditSubscriptionModal() {
     });
 }
 
-const subActionObserver = new MutationObserver(async (_, observer) => {
-    const cancelButton = document.querySelector<HTMLFormElement>(
-        `${popoverModalSelector} ${subActionSelector} form input[type='submit']`,
-    );
+const subActionObserver = new MutationObserver((_, observer) => {
+    void (async () => {
+        const cancelButton = document.querySelector<HTMLFormElement>(
+            `${popoverModalSelector} ${subActionSelector} form input[type='submit']`,
+        );
 
-    if (!cancelButton) {
-        return;
-    }
+        if (!cancelButton) {
+            return;
+        }
 
-    await setCancelSubmitted();
+        await setCancelSubmitted();
 
-    cancelButton.click();
+        cancelButton.click();
 
-    observer.disconnect();
+        observer.disconnect();
+    })();
 });

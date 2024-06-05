@@ -12,32 +12,34 @@ const subscriptionsContainer = document.querySelector("#mysContainer");
 
 // the element containing all the deliveries will be loaded asynchronously
 // we need to observe the element for changes when it is loaded
-const subscriptionsContainerObserver = new MutationObserver(async () => {
-    if (!subscriptionsContainer) {
-        return;
-    }
-
-    const subscriptionCards = Array.from(
-        subscriptionsContainer.querySelectorAll<HTMLElement>(
-            ".subscription-card",
-        ),
-    );
-
-    for (const subscriptionCard of subscriptionCards) {
-        const result = processSubscriptionCard(subscriptionCard);
-
-        if (!result) {
-            continue;
+const subscriptionsContainerObserver = new MutationObserver(() => {
+    void (async () => {
+        if (!subscriptionsContainer) {
+            return;
         }
 
-        itemCancelButtonButtonBySubscriptionId.set(
-            result.subscriptionId,
-            result.cancelButton,
+        const subscriptionCards = Array.from(
+            subscriptionsContainer.querySelectorAll<HTMLElement>(
+                ".subscription-card",
+            ),
         );
-    }
 
-    await addCancelAllButton();
-    await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
+        for (const subscriptionCard of subscriptionCards) {
+            const result = processSubscriptionCard(subscriptionCard);
+
+            if (!result) {
+                continue;
+            }
+
+            itemCancelButtonButtonBySubscriptionId.set(
+                result.subscriptionId,
+                result.cancelButton,
+            );
+        }
+
+        addCancelAllButton();
+        await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
+    })();
 });
 
 export function observeSubscriptionsContainer() {

@@ -11,7 +11,7 @@
         "noEmitOnError": true,
         "jsx": "react"
     },
-    "exclude": [
-        "scripts"
+    "include": [
+        "src/"
     ]
 }

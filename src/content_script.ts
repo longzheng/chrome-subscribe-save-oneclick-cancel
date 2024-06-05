@@ -10,7 +10,7 @@ import rg4js from "raygun4js";
 rg4js("apiKey", "AcjYeDpxudocd1VnNiiFg");
 rg4js("enableCrashReporting", true);
 
-(async () => {
+void (async () => {
     try {
         const search = location.search;
 
