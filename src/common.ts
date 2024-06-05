@@ -1,4 +1,4 @@
-import { getCancelQueue, removeFromCancelQueue } from "./sessionStorage";
+import { getCancelQueue } from "./sessionStorage";
 
 // since the MutationObserver may run multiple times
 // we don't want to re-add the cancel button if it's already been added
@@ -18,17 +18,22 @@ export async function processCancelQueue(
         return;
     }
 
-    const firstItem = cancelQueue[0];
+    // loop through each item in the cancel queue
+    for (const subscriptionId of cancelQueue) {
+        const cancelButton =
+            itemCancelButtonButtonBySubscriptionId.get(subscriptionId);
 
-    const cancelButton = itemCancelButtonButtonBySubscriptionId.get(firstItem);
+        // due to the asynchronous nature of the page loading
+        // there's a chance the subscription hasn't been loaded/rendered onto the page yet
+        // if we can't find the cancel button, just skip this item
+        // we assume a future trigger from the MutationObserver will handle this
+        // worst case scenario the subscription is never found and we try forever
+        if (!cancelButton) {
+            continue;
+        }
 
-    if (!cancelButton) {
-        // if cancel button is not found, remove from queue and try again
-        await removeFromCancelQueue(firstItem);
-        await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
+        // click on the cancel button
+        cancelButton.click();
         return;
     }
-
-    // click on the cancel button
-    cancelButton.click();
 }
