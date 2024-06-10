@@ -10,7 +10,8 @@
     "test": "npx jest",
     "lint": "npx eslint .",
     "generate-manifest": "ts-node scripts/generate-manifest.ts",
-    "build-zip": "npm run build && cd dist && zip -r ../chrome-subscribe-save-oneclick-cancel.zip *"
+    "build-zip": "npm run build && cd dist && zip -r ../chrome-subscribe-save-oneclick-cancel.zip *",
+    "sourcemap": "webpack --config webpack/webpack.sourcemap.js"
   },
   "author": "Long Zheng",
   "license": "MIT",
