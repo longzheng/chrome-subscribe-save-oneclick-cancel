@@ -55,7 +55,7 @@ export function observeSubscriptionsContainer() {
 
 function addCancelAllButton() {
     if (!subscriptionsContainer) {
-        return null;
+        return;
     }
 
     const subscriptionsCount = itemCancelButtonButtonBySubscriptionId.size;

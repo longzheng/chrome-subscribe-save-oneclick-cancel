@@ -1,4 +1,5 @@
 {
+    "extends": "@tsconfig/strictest/tsconfig.json",
     "compilerOptions": {
         "strict": true,
         "target": "ESNext",
@@ -9,7 +10,11 @@
         "rootDir": "src",
         "outDir": "dist/js",
         "noEmitOnError": true,
-        "jsx": "react"
+        "jsx": "react",
+        // too strict with third-party lib type definitions
+        "exactOptionalPropertyTypes": false,
+        // prevent unreachable code being auto deleted
+        "allowUnreachableCode": true
     },
     "include": [
         "src/"

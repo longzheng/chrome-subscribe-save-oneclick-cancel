@@ -8,7 +8,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
 } | null {
     // there may be placeholder buttons for "Add new subscription"
     // verify there is a `data-subscription-id` attribute
-    if (!subscriptionCard.dataset.subscriptionId) {
+    if (!subscriptionCard.dataset['subscriptionId']) {
         return null;
     }
 
@@ -25,7 +25,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
 
     subscriptionCard.setAttribute(ONECLICK_CANCEL_ATTRIBUTE, 'true');
 
-    const subscriptionId = subscriptionCard.dataset.subscriptionId;
+    const subscriptionId = subscriptionCard.dataset['subscriptionId'];
 
     if (!subscriptionId) {
         throw new Error('Subscription ID not found');

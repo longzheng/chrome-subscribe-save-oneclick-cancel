@@ -16,6 +16,14 @@ module.exports = {
     globals: {
         __dirname: true,
     },
+    rules: {
+        'no-useless-rename': 'error',
+        'no-unreachable': 'warn',
+        'object-shorthand': 'error',
+        '@typescript-eslint/consistent-type-imports': 'error',
+        '@typescript-eslint/switch-exhaustiveness-check': 'error',
+        '@typescript-eslint/no-unnecessary-condition': 'error',
+    },
     overrides: [
         {
             files: ['*.js', '*.cjs'],
