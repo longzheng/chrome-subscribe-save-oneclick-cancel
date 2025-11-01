@@ -24,8 +24,8 @@ void (async () => {
                     await removeFromCancelQueue(subscriptionId);
                 }
 
-                // automatically redirect back to the "Deliveries" page for more cancelling
-                location.pathname = '/auto-deliveries/';
+                // automatically redirect back to the "Subscriptions" page for more cancelling
+                location.pathname = '/auto-deliveries/subscriptionList';
             }
         }
 
