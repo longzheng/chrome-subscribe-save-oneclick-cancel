@@ -30,10 +30,8 @@ const manifest: chrome.runtime.ManifestV3 = {
     content_scripts: [
         {
             matches: [
-                // subscribe and save can appear in either of these two URLs
-                ...amazonDomains.map((domain) => `${domain}/auto-deliveries*`),
-                // handle both /gp/subscribe-and-save/manage and /gp/subscribe-and-save/manager URLs
-                ...amazonDomains.map((domain) => `${domain}/gp/subscribe-and-save/*`),
+                // subscribe and save can appear in multiple URLs
+                ...amazonDomains.map((domain) => `${domain}/*`),
             ],
             js: ['js/content_script.js', 'js/vendor.js'],
         },
