@@ -10,9 +10,7 @@ const modalObserver = new MutationObserver((_, observer) => {
         return;
     }
 
-    // the button will trigger navigating to the cancel page
-    // the span inside the button opens the cancel page inside the existing modal
-    const cancelButton = popoverModal.querySelector<HTMLElement>('.t-action-type-CANCEL > span');
+    const cancelButton = popoverModal.querySelector<HTMLElement>('.t-action-type-CANCEL');
 
     if (!cancelButton) {
         throw new Error('Could not find cancel button');
