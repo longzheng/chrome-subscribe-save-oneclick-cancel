@@ -1,8 +1,6 @@
-import path from 'path';
-import fs from 'fs';
-import { VERSION } from '../src/version';
+import { defineManifest } from '@crxjs/vite-plugin';
+import { VERSION } from './src/version';
 
-// supported Amazon domain names
 const amazonDomains = [
     'https://www.amazon.com',
     'https://www.amazon.ca',
@@ -16,7 +14,7 @@ const amazonDomains = [
     'https://www.amazon.com.au',
 ];
 
-const manifest: chrome.runtime.ManifestV3 = {
+export default defineManifest({
     manifest_version: 3,
     name: 'Amazon Subscribe & Save one-click cancel',
     description: 'Easy way to cancel Subscribe & Save subscriptions on Amazon with just one button click',
@@ -29,18 +27,9 @@ const manifest: chrome.runtime.ManifestV3 = {
     },
     content_scripts: [
         {
-            matches: [
-                // subscribe and save can appear in multiple URLs
-                ...amazonDomains.map((domain) => `${domain}/*`),
-            ],
-            js: ['js/content_script.js', 'js/vendor.js'],
+            matches: amazonDomains.map((domain) => `${domain}/*`),
+            js: ['src/content_script.ts'],
         },
     ],
     permissions: ['storage'],
-};
-
-const manifestJson = JSON.stringify(manifest, null, 4);
-
-const manifestFilePath = path.join(__dirname, '../public/manifest.json');
-
-fs.writeFileSync(manifestFilePath, manifestJson);
+});

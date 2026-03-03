@@ -7,16 +7,12 @@
         "module": "ESNext",
         "esModuleInterop": true,
         "sourceMap": false,
-        "rootDir": "src",
-        "outDir": "dist/js",
         "noEmitOnError": true,
         "jsx": "react",
-        // too strict with third-party lib type definitions
+        "types": ["chrome"],
+        "lib": ["ESNext", "DOM"],
         "exactOptionalPropertyTypes": false,
-        // prevent unreachable code being auto deleted
         "allowUnreachableCode": true
     },
-    "include": [
-        "src/"
-    ]
+    "include": ["src", "manifest.config.ts", "vite.config.ts"]
 }

@@ -3,18 +3,25 @@ Easy way to cancel Amazon Subscribe & Save subscriptions with just one button cl
 
 ![Explanation image](https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel/assets/484912/aca44179-f7b8-4fa2-b2ed-3c4770ff82fd)
 
-- Supports Amazon.com, Amazon.ca, Amazon.co.uk, Amazon.de, Amazon.fr, Amazon.it, Amazon.es, Amazon.co.jp, Amazon.in, and Amazon.com.au (additional country URL need to be added to `manifest.json`)
+- Supports Amazon.com, Amazon.ca, Amazon.co.uk, Amazon.de, Amazon.fr, Amazon.it, Amazon.es, Amazon.co.jp, Amazon.in, and Amazon.com.au (additional country URL need to be added to `manifest.config.ts`)
 - Adds "One-click cancel" button to each subscription
 - Adds "One-click cancel all" to each delivery schedule
 - Adds "One-click cancel all" to all subscriptions
 - Automatically clicks through the subscription dialog to cancel
 - After cancellation, redirects users back to the "Deliveries" tab to cancel more subscriptions
 
-### Install from Chrome Web Store
+## Development
+
+This project now uses the `create-crxjs` Vite-based extension structure.
+
+- `npm run dev` - run Vite in watch mode for extension development
+- `npm run build` - generate a production extension build in `dist/`
+
+## Install from Chrome Web Store
 
 https://chrome.google.com/webstore/detail/lmhmoofhakpnlfighmgfkoonfkbjjgfh?authuser=0&hl=en-AU
 
-### Install locally
+## Install locally
 
 1. Build the project with `npm install` and `npm run build`
 1. Open Chrome "Manage Extensions" page `chrome://extensions/`
