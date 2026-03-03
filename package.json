@@ -2,6 +2,12 @@
     "name": "chrome-subscribe-save-oneclick-cancel",
     "version": "1.0.0",
     "description": "chrome-subscribe-save-oneclick-cancel",
+    "license": "MIT",
+    "author": "Long Zheng",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel.git"
+    },
     "type": "module",
     "scripts": {
         "dev": "vite",
@@ -13,11 +19,8 @@
         "format": "oxfmt --write .",
         "format:check": "oxfmt --check ."
     },
-    "author": "Long Zheng",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel.git"
+    "dependencies": {
+        "raygun4js": "^3.0.1"
     },
     "devDependencies": {
         "@crxjs/vite-plugin": "^2.1.0-beta.32",
@@ -33,8 +36,5 @@
         "ts-jest": "^29.1.4",
         "typescript": "^5.4.5",
         "vite": "^5.2.13"
-    },
-    "dependencies": {
-        "raygun4js": "^3.0.1"
     }
 }

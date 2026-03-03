@@ -4,6 +4,6 @@
     "tabWidth": 4,
     "trailingComma": "all",
     "arrowParens": "always",
-    "sortPackageJson": false,
+    "sortPackageJson": true,
     "ignorePatterns": ["dist/**"]
 }
