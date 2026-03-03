@@ -1,4 +1,5 @@
 # Amazon Subscribe & Save one-click cancel Chrome extension
+
 Easy way to cancel Amazon Subscribe & Save subscriptions with just one button click.
 
 ![Explanation image](https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel/assets/484912/aca44179-f7b8-4fa2-b2ed-3c4770ff82fd)
@@ -16,6 +17,8 @@ This project now uses the `create-crxjs` Vite-based extension structure.
 
 - `npm run dev` - run Vite in watch mode for extension development
 - `npm run build` - generate a production extension build in `dist/`
+- `npm run lint` - run TypeScript checks plus oxlint with type-aware linting
+- `npm run format` - format the codebase with oxfmt
 
 ## Install from Chrome Web Store
 

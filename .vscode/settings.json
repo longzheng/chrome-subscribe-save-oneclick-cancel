@@ -3,13 +3,19 @@
     "files.eol": "\n",
     "json.schemas": [
         {
-            "fileMatch": [
-                "/manifest.json"
-            ],
+            "fileMatch": ["/manifest.json"],
             "url": "http://json.schemastore.org/chrome-manifest"
         }
     ],
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
     "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit"
-    }
+        "source.fixAll": "explicit",
+        "source.fixAll.oxc": "explicit"
+    },
+    "oxc.enable.oxfmt": true,
+    "oxc.enable.oxlint": true,
+    "oxc.lint.run": "onSave",
+    "oxc.typeAware": true
 }
