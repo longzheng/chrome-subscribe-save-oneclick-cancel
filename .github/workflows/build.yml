@@ -15,14 +15,16 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v5
             - uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 24
+                  cache: "pnpm"
 
-            - run: npm ci
-            - run: npm run lint
-            - run: npm run build-zip
-            - name: 'Upload Artifact'
+            - run: pnpm install
+            - run: pnpm run lint
+            - run: pnpm run build-zip
+            - name: "Upload Artifact"
               uses: actions/upload-artifact@v4
               with:
                   path: chrome-subscribe-save-oneclick-cancel.zip

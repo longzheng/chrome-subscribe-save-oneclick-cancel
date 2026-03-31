@@ -78,8 +78,7 @@ function addCancelAllButton() {
 
     const cancelAllButton = document.createElement('button');
     cancelAllButton.innerText = `One-click cancel all ${subscriptionsCount} subscriptions`;
-    Object.assign(cancelAllButton.style, {
-        ...buttonStyles,
+    Object.assign(cancelAllButton.style, buttonStyles, {
         marginLeft: '30px',
     });
 
