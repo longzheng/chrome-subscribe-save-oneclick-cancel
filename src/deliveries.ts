@@ -71,8 +71,7 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
 
     const cancelAllButton = document.createElement('button');
     cancelAllButton.innerText = `One-click cancel delivery`;
-    Object.assign(cancelAllButton.style, {
-        ...buttonStyles,
+    Object.assign(cancelAllButton.style, buttonStyles, {
         display: 'block',
         width: '100%',
         marginTop: '10px',

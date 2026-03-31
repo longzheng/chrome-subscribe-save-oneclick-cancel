@@ -34,8 +34,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
     const cancelButton = document.createElement('button');
     cancelButton.innerText = 'One-click cancel';
 
-    Object.assign(cancelButton.style, {
-        ...buttonStyles,
+    Object.assign(cancelButton.style, buttonStyles, {
         display: 'block',
         width: '100%',
         marginTop: '10px',
