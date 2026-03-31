@@ -15,10 +15,10 @@ Easy way to cancel Amazon Subscribe & Save subscriptions with just one button cl
 
 This project now uses the `create-crxjs` Vite-based extension structure.
 
-- `npm run dev` - run Vite in watch mode for extension development
-- `npm run build` - generate a production extension build in `dist/`
-- `npm run lint` - run TypeScript checks plus oxlint with type-aware linting
-- `npm run format` - format the codebase with oxfmt
+- `pnpm run dev` - run Vite in watch mode for extension development
+- `pnpm run build` - generate a production extension build in `dist/`
+- `pnpm run lint` - run TypeScript checks plus oxlint with type-aware linting
+- `pnpm run format` - format the codebase with oxfmt
 
 ## Install from Chrome Web Store
 
@@ -26,7 +26,7 @@ https://chrome.google.com/webstore/detail/lmhmoofhakpnlfighmgfkoonfkbjjgfh?authu
 
 ## Install locally
 
-1. Build the project with `npm install` and `npm run build`
+1. Build the project with `pnpm install` and `pnpm run build`
 1. Open Chrome "Manage Extensions" page `chrome://extensions/`
 1. Enable "Developer mode" toggle in top right corner
 1. Click "Load unpacked" button and select the `dist` folder in the project

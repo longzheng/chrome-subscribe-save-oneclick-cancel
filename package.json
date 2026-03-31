@@ -8,14 +8,15 @@
         "type": "git",
         "url": "https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel.git"
     },
+    "packageManager": "pnpm@10.13.1",
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "npm run clean && vite build",
+        "build": "pnpm run clean && vite build",
         "clean": "rimraf dist chrome-subscribe-save-oneclick-cancel.zip",
-        "test": "npx jest --passWithNoTests",
+        "test": "pnpm exec jest --passWithNoTests",
         "lint": "tsc --noEmit && oxlint --type-aware .",
-        "build-zip": "npm run build && cd dist && zip -r ../chrome-subscribe-save-oneclick-cancel.zip *",
+        "build-zip": "pnpm run build && cd dist && zip -r ../chrome-subscribe-save-oneclick-cancel.zip *",
         "format": "oxfmt --write .",
         "format:check": "oxfmt --check ."
     },
