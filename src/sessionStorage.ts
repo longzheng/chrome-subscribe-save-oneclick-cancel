@@ -30,13 +30,15 @@ export async function removeCancelSubmitted() {
 export async function getCancelQueue(): Promise<string[]> {
     const value = await chromeStorageLocalGetWithRetry(ONECLICK_CANCEL_QUEUE_KEY);
 
-    const storageValue = value[ONECLICK_CANCEL_QUEUE_KEY] as unknown;
+    const storageValue = value[ONECLICK_CANCEL_QUEUE_KEY];
 
     if (!storageValue) return [];
 
     if (!Array.isArray(storageValue)) return [];
 
-    return storageValue as string[];
+    if (!storageValue.every((entry) => typeof entry === 'string')) return [];
+
+    return [...storageValue];
 }
 
 export async function addToCancelQueue(subscriptionIds: string[]) {

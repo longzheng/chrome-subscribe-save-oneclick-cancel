@@ -82,7 +82,7 @@ function addCancelAllButton() {
         marginLeft: '30px',
     });
 
-    cancelAllButton.onclick = async () => {
+    cancelAllButton.addEventListener('click', async () => {
         if (
             !confirm(
                 `Are you sure you want to cancel ${subscriptionsCount} subscriptions?\n\nThe screen will automatically refresh after each cancellation and cancel the next subscription. Do not click on anything until it is all done.`,
@@ -95,7 +95,7 @@ function addCancelAllButton() {
 
         await addToCancelQueue(subscriptionIds);
         await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
-    };
+    });
 
     subscriptionFilters.insertAdjacentElement('beforeend', cancelAllButton);
 }
