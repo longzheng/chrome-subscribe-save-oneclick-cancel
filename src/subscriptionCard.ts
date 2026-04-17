@@ -40,7 +40,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
         marginTop: '10px',
     });
 
-    cancelButton.onclick = () => {
+    cancelButton.addEventListener('click', () => {
         // click on the subscription image to open edit subscription modal
         const editSubscriptionModalTrigger = subscriptionCard.querySelector<HTMLElement>(
             '.subscription-image-container > span',
@@ -55,7 +55,7 @@ export function processSubscriptionCard(subscriptionCard: HTMLElement): {
         observeEditSubscriptionModal();
 
         editSubscriptionModalTrigger.click();
-    };
+    });
 
     subscriptionCard.appendChild(cancelButton);
 

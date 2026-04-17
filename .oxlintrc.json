@@ -2,5 +2,9 @@
     "env": {
         "builtin": true
     },
+    "categories": {
+        "correctness": "error",
+        "suspicious": "error"
+    },
     "ignorePatterns": ["dist/**"]
 }

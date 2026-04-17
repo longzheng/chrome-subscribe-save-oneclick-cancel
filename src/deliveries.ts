@@ -77,7 +77,7 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
         marginTop: '10px',
     });
 
-    cancelAllButton.onclick = async () => {
+    cancelAllButton.addEventListener('click', async () => {
         if (
             !confirm(
                 `Are you sure you want to cancel ${deliveryCardSubscriptionIds.length} subscriptions in this delivery?\n\nThe screen will automatically refresh after each cancellation and cancel the next subscription.  Do not click on anything until it is all done.`,
@@ -88,7 +88,7 @@ function processDeliveryCard(deliveryCard: HTMLElement) {
 
         await addToCancelQueue(deliveryCardSubscriptionIds);
         await processCancelQueue(itemCancelButtonButtonBySubscriptionId);
-    };
+    });
 
     deliveryInformationContainer.appendChild(cancelAllButton);
 }
