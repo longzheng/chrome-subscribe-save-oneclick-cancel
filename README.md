@@ -17,7 +17,7 @@ This project now uses the `create-crxjs` Vite-based extension structure.
 
 - `pnpm run dev` - run Vite in watch mode for extension development
 - `pnpm run build` - generate a production extension build in `dist/`
-- `pnpm run lint` - run oxlint with type-aware linting and type checking
+- `pnpm run lint` - run oxlint using the project configuration
 - `pnpm run format` - format the codebase with oxfmt
 
 ## Install from Chrome Web Store

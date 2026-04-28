@@ -16,7 +16,7 @@
         "build": "pnpm run clean && vite build",
         "clean": "rimraf dist chrome-subscribe-save-oneclick-cancel.zip",
         "test": "pnpm exec jest --passWithNoTests",
-        "lint": "oxlint --type-aware --type-check .",
+        "lint": "oxlint .",
         "build-zip": "pnpm run build && cd dist && zip -r ../chrome-subscribe-save-oneclick-cancel.zip *",
         "format": "oxfmt --write .",
         "format:check": "oxfmt --check ."

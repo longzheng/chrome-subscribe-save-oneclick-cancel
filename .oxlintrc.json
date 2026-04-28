@@ -6,5 +6,9 @@
         "correctness": "error",
         "suspicious": "error"
     },
+    "options": {
+        "typeAware": true,
+        "typeCheck": true
+    },
     "ignorePatterns": ["dist/**"]
 }
