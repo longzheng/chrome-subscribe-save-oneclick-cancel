@@ -8,14 +8,13 @@
         "type": "git",
         "url": "https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel.git"
     },
-    "packageManager": "pnpm@10.13.1",
     "type": "module",
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "dev": "vite",
         "build": "pnpm run clean && vite build",
         "clean": "rimraf dist chrome-subscribe-save-oneclick-cancel.zip",
-        "test": "pnpm exec jest --passWithNoTests",
+        "test": "vitest run --passWithNoTests",
         "lint": "oxlint .",
         "build-zip": "pnpm run build && cd dist && zip -r ../chrome-subscribe-save-oneclick-cancel.zip *",
         "format": "oxfmt --write .",
@@ -25,18 +24,17 @@
         "raygun4js": "^3.1.4"
     },
     "devDependencies": {
-        "@crxjs/vite-plugin": "^2.4.0",
+        "@crxjs/vite-plugin": "^2.7.1",
         "@tsconfig/strictest": "^2.0.8",
-        "@types/chrome": "0.1.38",
-        "@types/jest": "^30.0.0",
+        "@types/chrome": "0.2.2",
         "@types/raygun4js": "^3.0.0",
-        "jest": "^30.3.0",
-        "oxfmt": "^0.43.0",
-        "oxlint": "^1.58.0",
-        "oxlint-tsgolint": "^0.18.1",
+        "oxfmt": "^0.60.0",
+        "oxlint": "^1.75.0",
+        "oxlint-tsgolint": "^7.0.2001",
         "rimraf": "^6.1.3",
-        "ts-jest": "^29.4.6",
-        "typescript": "^6.0.2",
-        "vite": "^8.0.3"
-    }
+        "typescript": "^7.0.2",
+        "vite": "^8.1.5",
+        "vitest": "^4.1.10"
+    },
+    "packageManager": "pnpm@11.17.0"
 }
