@@ -5,6 +5,7 @@ Easy way to cancel Amazon Subscribe & Save subscriptions with just one button cl
 ![Explanation image](https://github.com/longzheng/chrome-subscribe-save-oneclick-cancel/assets/484912/aca44179-f7b8-4fa2-b2ed-3c4770ff82fd)
 
 - Supports Amazon.com, Amazon.ca, Amazon.co.uk, Amazon.de, Amazon.fr, Amazon.it, Amazon.es, Amazon.co.jp, Amazon.in, and Amazon.com.au (additional country URL need to be added to `manifest.config.ts`)
+- Supports both the legacy Subscribe & Save pages and Amazon's redesigned subscriptions hub and delivery-detail pages
 - Adds "One-click cancel" button to each subscription
 - Adds "One-click cancel all" to each delivery schedule
 - Adds "One-click cancel all" to all subscriptions

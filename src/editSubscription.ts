@@ -3,35 +3,51 @@ import { setCancelSubmitted } from './sessionStorage';
 const popoverModalSelector = '.a-popover-modal .editSubscriptionContent';
 const subActionSelector = '.subActionContent';
 
+let activePopoverModal: Element | null = null;
+
 const modalObserver = new MutationObserver((_, observer) => {
-    const popoverModal = document.querySelector(popoverModalSelector);
+    processEditSubscriptionModal(observer);
+});
+
+function processEditSubscriptionModal(observer?: MutationObserver) {
+    const popoverModal = Array.from(document.querySelectorAll(popoverModalSelector)).find(
+        (content) => content.closest('.a-popover-modal')?.getAttribute('aria-hidden') !== 'true',
+    );
 
     if (!popoverModal) {
-        return;
+        return false;
     }
 
     const cancelButton = popoverModal.querySelector<HTMLElement>('.t-action-type-CANCEL');
 
     if (!cancelButton) {
-        throw new Error('Could not find cancel button');
+        return false;
     }
-
-    observer.disconnect();
 
     const subActionContent = popoverModal.querySelector<HTMLElement>(subActionSelector);
 
     if (!subActionContent) {
-        throw new Error('Could not find subActionContainer');
+        return false;
     }
+
+    observer?.disconnect();
+    activePopoverModal = popoverModal;
 
     subActionObserver.observe(subActionContent, {
         childList: true,
+        subtree: true,
     });
 
     cancelButton.click();
-});
+
+    return true;
+}
 
 export function observeEditSubscriptionModal() {
+    if (processEditSubscriptionModal()) {
+        return;
+    }
+
     modalObserver.observe(document.body, {
         childList: true,
         subtree: true,
@@ -40,8 +56,8 @@ export function observeEditSubscriptionModal() {
 
 const subActionObserver = new MutationObserver((_, observer) => {
     void (async () => {
-        const cancelButton = document.querySelector<HTMLFormElement>(
-            `${popoverModalSelector} ${subActionSelector} form input[type='submit']`,
+        const cancelButton = activePopoverModal?.querySelector<HTMLElement>(
+            `${subActionSelector} form input[type='submit'], ${subActionSelector} form button[type='submit']`,
         );
 
         if (!cancelButton) {
@@ -53,5 +69,6 @@ const subActionObserver = new MutationObserver((_, observer) => {
         cancelButton.click();
 
         observer.disconnect();
+        activePopoverModal = null;
     })();
 });
