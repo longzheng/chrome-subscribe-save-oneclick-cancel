@@ -44,10 +44,10 @@ export async function getCancelQueue(): Promise<string[]> {
 export async function addToCancelQueue(subscriptionIds: string[]) {
     const queue = await getCancelQueue();
 
-    queue.push(...subscriptionIds);
+    const newQueue = [...new Set([...queue, ...subscriptionIds])];
 
     await chromeStorageLocalSetWithRetry({
-        [ONECLICK_CANCEL_QUEUE_KEY]: queue,
+        [ONECLICK_CANCEL_QUEUE_KEY]: newQueue,
     });
 }
 

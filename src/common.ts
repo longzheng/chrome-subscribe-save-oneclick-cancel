@@ -4,6 +4,8 @@ import { getCancelQueue } from './sessionStorage';
 // we don't want to re-add the cancel button if it's already been added
 export const ONECLICK_CANCEL_ATTRIBUTE = 'data-oneclick-cancel';
 
+let triggeredSubscriptionId: string | null = null;
+
 export async function processCancelQueue(itemCancelButtonButtonBySubscriptionId: Map<string, HTMLButtonElement>) {
     // no cancel button found, page may not have finished loading
     if (itemCancelButtonButtonBySubscriptionId.size === 0) {
@@ -18,6 +20,10 @@ export async function processCancelQueue(itemCancelButtonButtonBySubscriptionId:
 
     // loop through each item in the cancel queue
     for (const subscriptionId of cancelQueue) {
+        if (subscriptionId === triggeredSubscriptionId) {
+            return;
+        }
+
         const cancelButton = itemCancelButtonButtonBySubscriptionId.get(subscriptionId);
 
         // due to the asynchronous nature of the page loading
@@ -30,6 +36,7 @@ export async function processCancelQueue(itemCancelButtonButtonBySubscriptionId:
         }
 
         // click on the cancel button
+        triggeredSubscriptionId = subscriptionId;
         cancelButton.click();
         return;
     }
