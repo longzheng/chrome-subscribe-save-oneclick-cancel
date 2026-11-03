@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      raygun4js:
-        specifier: ^3.1.4
-        version: 3.1.4
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: ^2.7.1
@@ -21,9 +17,6 @@ importers:
       '@types/chrome':
         specifier: 0.2.2
         version: 0.2.2
-      '@types/raygun4js':
-        specifier: ^3.0.0
-        version: 3.0.0
       oxfmt:
         specifier: ^0.60.0
         version: 0.60.0
@@ -479,9 +472,6 @@ packages:
   '@types/node@25.5.0':
     resolution: {integrity: sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw==}
 
-  '@types/raygun4js@3.0.0':
-    resolution: {integrity: sha512-iP689Z6TvFplz4p1pEDJ82/gxIBkJLkclvLVOq7iaC/AFmEHH3wdLl7Ym/uWhfSviAlONK5kU+bRDXx92h2hxA==}
-
   '@typescript/typescript-aix-ppc64@7.0.2':
     resolution: {integrity: sha512-MTKKkWB7p/0E9xi1d1tHtZ5PiLkGEMIq88pK2CubZjOsLtYTLqhgIgi6zepFa+9GHZ6h05NMCkQxGKiPXMxXtQ==}
     engines: {node: '>=16.20.0'}
@@ -918,9 +908,6 @@ packages:
     resolution: {integrity: sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg==}
     engines: {node: ^10 || ^12 || >=14}
 
-  raygun4js@3.1.4:
-    resolution: {integrity: sha512-wNoFbChd6ccZ/OMzRDQRgfSLWkvYNT7ghye1wFeiNxhn6III7vNPnt2NIzLqaWCOmJqiZTiWy1deQBmG6RlBjQ==}
-
   rimraf@6.1.3:
     resolution: {integrity: sha512-LKg+Cr2ZF61fkcaK1UdkH2yEBBKnYjTyWzTJT6KNPcSPaiT7HSdhtMXQuN5wkTX0Xu72KQ1l8S42rlmexS2hSA==}
     engines: {node: 20 || >=22}
@@ -1073,9 +1060,6 @@ packages:
         optional: true
       jsdom:
         optional: true
-
-  web-vitals@3.5.2:
-    resolution: {integrity: sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==}
 
   why-is-node-running@2.3.0:
     resolution: {integrity: sha512-hUrmaWBdVDcxvYqnyh09zunKzROWjbZTiNy8dBEjkS7ehEDQibXJ7XvlmtbwuTclUiIyN+CyXQD4Vmko8fNm8w==}
@@ -1349,8 +1333,6 @@ snapshots:
     dependencies:
       undici-types: 7.18.2
     optional: true
-
-  '@types/raygun4js@3.0.0': {}
 
   '@typescript/typescript-aix-ppc64@7.0.2':
     optional: true
@@ -1710,10 +1692,6 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  raygun4js@3.1.4:
-    dependencies:
-      web-vitals: 3.5.2
-
   rimraf@6.1.3:
     dependencies:
       glob: 13.0.6
@@ -1841,8 +1819,6 @@ snapshots:
       '@types/node': 25.5.0
     transitivePeerDependencies:
       - msw
-
-  web-vitals@3.5.2: {}
 
   why-is-node-running@2.3.0:
     dependencies:
