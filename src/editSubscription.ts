@@ -1,3 +1,4 @@
+import { observeCancelCompletion } from './cancelCompletion';
 import { setCancelSubmitted } from './sessionStorage';
 
 const popoverModalSelector = '.a-popover-modal .editSubscriptionContent';
@@ -64,11 +65,21 @@ const subActionObserver = new MutationObserver((_, observer) => {
             return;
         }
 
-        await setCancelSubmitted();
+        const form = cancelButton.closest('form');
+        const subscriptionId = form ? new URL(form.action, document.baseURI).searchParams.get('subscriptionId') : null;
 
-        cancelButton.click();
+        if (!subscriptionId) {
+            console.error('Could not find the subscription ID in the cancellation form');
+            return;
+        }
 
+        // Disconnect before awaiting storage so repeated modal mutations cannot
+        // submit the same cancellation more than once.
         observer.disconnect();
         activePopoverModal = null;
+
+        await setCancelSubmitted(subscriptionId);
+        observeCancelCompletion();
+        cancelButton.click();
     })();
 });

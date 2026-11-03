@@ -23,6 +23,7 @@ jobs:
 
             - run: pnpm install
             - run: pnpm run lint
+            - run: pnpm run test
             - run: pnpm run build-zip
             - name: 'Upload Artifact'
               uses: actions/upload-artifact@v7
