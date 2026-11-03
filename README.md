@@ -10,7 +10,7 @@ Easy way to cancel Amazon Subscribe & Save subscriptions with just one button cl
 - Adds "One-click cancel all" to each delivery schedule
 - Adds "One-click cancel all" to all subscriptions
 - Automatically clicks through the subscription dialog to cancel
-- After cancellation, redirects users back to the "Deliveries" tab to cancel more subscriptions
+- After cancellation, reloads the subscriptions list and continues cancelling queued subscriptions
 
 ## Development
 
@@ -19,6 +19,7 @@ This project now uses the `create-crxjs` Vite-based extension structure.
 - `pnpm run dev` - run Vite in watch mode for extension development
 - `pnpm run build` - generate a production extension build in `dist/`
 - `pnpm run lint` - run oxlint using the project configuration
+- `pnpm run test` - run cancellation flow regression tests
 - `pnpm run format` - format the codebase with oxfmt
 
 ## Install from Chrome Web Store

@@ -13,14 +13,17 @@ async function chromeStorageLocalGetWithRetry(param: Parameters<typeof chrome.st
     return retryFnAsync(() => chrome.storage.local.get(param));
 }
 
-export async function setCancelSubmitted() {
-    await chromeStorageLocalSetWithRetry({ [ONECLICK_CANCEL_SUBMITTED_KEY]: true });
+export async function setCancelSubmitted(subscriptionId: string) {
+    await chromeStorageLocalSetWithRetry({ [ONECLICK_CANCEL_SUBMITTED_KEY]: subscriptionId });
 }
 
-export async function hasCancelSubmitted() {
+export async function getCancelSubmitted(): Promise<string | true | null> {
     const value = await chromeStorageLocalGetWithRetry(ONECLICK_CANCEL_SUBMITTED_KEY);
+    const submitted = value[ONECLICK_CANCEL_SUBMITTED_KEY];
 
-    return value[ONECLICK_CANCEL_SUBMITTED_KEY] === true;
+    // Older extension versions stored only a boolean. Keep supporting their
+    // redirect responses, which include the subscription ID in the URL.
+    return submitted === true || (typeof submitted === 'string' && submitted.length > 0) ? submitted : null;
 }
 
 export async function removeCancelSubmitted() {
